@@ -1,0 +1,77 @@
+<!-- <pre>
+
+{{notificaciones | json}}
+
+</pre> -->
+<div class="justify-content-center" *ngIf="infante" >
+
+        <img [src]="'https://virtualkinder.com/subir/uploads/' +infante.foto" class="profile-img">
+        
+        <div class="row justify-content-center">
+                <div class="col-3">
+                        <h1 class="profile-name">{{infante.nombre}}  {{infante.apellido}}  </h1>
+                        <!-- <span class="profile-title">UX / UI Designer</span> -->
+                </div>
+       
+</div>
+<div class="row justify-content-center" *ngFor="let item of notificaciones" >
+        <div class="media  col-12 col-md-8">
+                <img class="d-flex align-self-center mr-3 icon" [src]=" item | actividad:'foto'" alt="Generic placeholder image">
+                <div class="media-body">
+                        <small class="text-muted" class="pull-right">
+                                <fa [name]="'clock-o'" [size]=1  ></fa>{{item.fecha_hora | date:'medium'}}</small>
+                    <h5 class="mt-0">  {{item | actividad:'titulo'}}</h5>
+                    <p *ngIf="item.actividad != 'especial'" >{{infante.nombre}} {{item | actividad:'sub'}}</p>
+                    <p *ngIf="item.actividad == 'especial'" >{{item | actividad:'sub'}}</p>
+                    
+                    <!-- <p class="mb-0">Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p> -->
+                </div>
+            </div>
+            <!-- <div class="media  col-12 col-md-8">
+                    <img class="d-flex align-self-center mr-3 icon" src="assets/panal.png" alt="Generic placeholder image">
+                    <div class="media-body">
+                        <h5 class="mt-0">Center-aligned media</h5>
+                        <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla.
+                            Donec lacinia congue felis in faucibus.</p>
+                        <p class="mb-0">Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+                    </div>
+                </div>
+                <div class="media  col-12 col-md-8">
+                        <img class="d-flex align-self-center mr-3 icon" src="assets/sleep.svg" alt="Generic placeholder image">
+                        <div class="media-body">
+                            <h5 class="mt-0">Center-aligned media</h5>
+                            <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla.
+                                Donec lacinia congue felis in faucibus.</p>
+                            <p class="mb-0">Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+                        </div>
+                    </div>
+                    <div class="media  col-12 col-md-8">
+                            <img class="d-flex align-self-center mr-3 icon" src="assets/entrada.png" alt="Generic placeholder image">
+                            <div class="media-body">
+                                <h5 class="mt-0">Center-aligned media</h5>
+                                <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla.
+                                    Donec lacinia congue felis in faucibus.</p>
+                                <p class="mb-0">Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+                            </div>
+                        </div>
+                        <div class="media  col-12 col-md-8">
+                                <img class="d-flex align-self-center mr-3 icon" src="assets/salida.png" alt="Generic placeholder image">
+                                <div class="media-body">
+                                    <h5 class="mt-0">Center-aligned media</h5>
+                                    <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla.
+                                        Donec lacinia congue felis in faucibus.</p>
+                                    <p class="mb-0">Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+                                </div>
+                            </div>
+                            <div class="media  col-12 col-md-8">
+                                    <img class="d-flex align-self-center mr-3 icon" src="assets/almuerzo.png" alt="Generic placeholder image">
+                                    <div class="media-body">
+                                        <h5 class="mt-0">Center-aligned media</h5>
+                                        <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla.
+                                            Donec lacinia congue felis in faucibus.</p>
+                                        <p class="mb-0">Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+                                    </div>
+                                </div> -->
+    
+    </div>
+

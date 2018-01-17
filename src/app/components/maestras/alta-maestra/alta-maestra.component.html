@@ -1,0 +1,88 @@
+<div class="container">
+    <h4>Alta <small>Maestra</small></h4>
+    <hr>
+  
+    <form [formGroup]="FormMaestra" (ngSubmit)="onSubmitMaestra()">
+
+        
+                  <div>
+        
+                    <div class="form-group row">
+                      <label class="col-2  col-form-label">Nombre</label>
+                      <div class="col-8">
+        
+                        <input class="form-control" type="text" placeholder="Nombre" formControlName="nombre">
+        
+                      </div>
+                    </div>
+        
+        
+                    <div class="form-group row">
+                      <label class="col-2 col-form-label">Apellido</label>
+                      <div class="col-8">
+        
+                        <input class="form-control" type="text" placeholder="Apellido" formControlName="apellido">
+                      </div>
+                    </div>
+        
+                  </div>
+        
+        
+                  <div class="form-group row">
+                    <label class="col-2 col-form-label">Documento</label>
+                    <div class="col-8">
+        
+                      <input class="form-control" type="number" placeholder="Número de documento" formControlName="DNI">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-2 col-form-label">Direccion</label>
+                    <div class="col-8">
+        
+                      <input class="form-control" type="text" placeholder="direccion" formControlName="direccion">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-2 col-form-label">Teléfono</label>
+                    <div class="col-8">
+        
+                      <input class="form-control" type="telephone" placeholder="1566083301" formControlName="telefono">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-2 col-form-label">Correo</label>
+                    <div class="col-8">
+        
+                      <input class="form-control" pTooltip="Se utilizará para el envio de notificaciones" tooltipPosition="top" tooltipEvent="focus"
+                        showDelay="1000" hideDelay="500" type="email2" placeholder="Correo electrónico" formControlName="correo">
+                    </div>
+                    
+        
+        
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-2 col-form-label">Fecha de Nacimiento</label>
+                    <div class="col-md-8">
+                      <p-calendar formControlName="fecha_na" dateFormat="dd/mm/yy" [monthNavigator]="true" [yearNavigator]="true" yearRange="1970:2030" [locale]="es"></p-calendar>
+        
+                    </div>
+        
+        
+                  </div>  <div class="form-group row">
+                      <label class="col-2 col-form-label">Pin Tablet</label>
+                      <div class="col-8">
+          
+                        <input class="form-control"  placeholder="Pin Tablet" formControlName="pin">
+                      </div>
+                      
+          
+          
+                    </div>
+        
+        
+                  <button class="col-8" type="submit" class="btn btn-outline-primary" [disabled]="!FormMaestra.valid ">
+                                  Enviar
+                            </button>
+        
+                </form>
+</div>

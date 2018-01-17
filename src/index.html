@@ -1,14 +1,36 @@
 <!doctype html>
 <html lang="en">
+   
+      
 <head>
   <meta charset="utf-8">
-  <title>Padre</title>
+  <title>Virtual Kinder</title>
   <base href="/">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/x-icon" href="assets/logo-kinderv.png">
+  <link rel="manifest" href="/manifest.json">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+      
+<script src="https://cdn.auth0.com/js/auth0/8.8/auth0.min.js"></script>
+
 </head>
-<body>
+
+<body  class="index-page">
+
+
+  <app-home></app-home>
+  <script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/firebase-messaging-sw.js').then(function(registration) {
+      console.log('Service Worker registered');
+    }).catch(function(err) {
+      console.log('Service Worker registration failed: ', err);
+    });
+  }
+  
+</script>
   <app-root></app-root>
 </body>
 </html>

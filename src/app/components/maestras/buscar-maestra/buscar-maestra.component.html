@@ -1,0 +1,120 @@
+<div class="conateiner">
+    <div class="col-12">
+        <div class="row">
+            <div class="col-12 col-md-8 col-lg-8 form-group">
+                <div class="form-group">
+                    <form [formGroup]="formBusqueda" style="display: block;" autocomplete="off">
+                        <div class="col-xs-12" id="busqueda">
+    
+                            <input type="text" name="parametro_busqueda" formControlName="parametro" tabindex="1" class="form-control" placeholder="Parametro de busqueda"
+                                value="">
+    
+                            <span *ngIf="!formBusqueda.valid" class="error" id="danger"><small>Minimo 3 caracteres</small></span>
+    
+    
+                        </div>
+    
+    
+    
+                    </form>
+                </div>
+    
+            </div>
+    
+        </div>
+    
+    
+    
+    
+    </div>
+    
+    <div class="container">
+        <div class="row">
+    
+    
+            <div class="col-12">
+    
+                <!-- Card 1 -->
+    
+                <ul class="list-group list-group-flush">
+                    <li *ngFor="let item of maestras" class="puntos" >
+                  <div class="card">
+    
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-1">
+                                        <div class="ratio img-responsive img-circle" [style.background-image]="'url(https://virtualkinder.com/subir/uploads/' +item.foto+' )'">
+    
+    
+                                        </div>
+    
+                                    </div> 
+                                    <div class="col-10">
+                                            <h5>{{item.nombre}}  {{item.apellido}}</h5>
+                                            
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <p>Documento: {{item.DNI}}</p>
+                                                <p>Telefono: {{item.telefono}} </p>
+                                                <p>Fecha Nacimiento:{{item.fecha_na}}</p>
+    
+    
+    
+                                            </div>
+                                            <div class="col-4">
+    
+    
+    
+                                                <p>Dirección: {{item.direccion}}</p>
+                                                <p>sala</p>
+    
+    
+    
+                                            </div>
+                                            <div class="col-3">
+                                                <p>Fecha nacimiento: {{item.nombre}}</p>
+                                                <p>Alta: {{item.fecha_alta}}</p>
+                                                <p>Pin Tablet: {{item.pin_tablet}}</p>
+                                                
+    
+    
+    
+    
+    
+    
+                                            </div>
+    
+                                        </div>
+                                        <div class="col-12 botones">
+                                                
+                                            <button type="button" class="btn btn-outline-primary btn-sm" (click)="editarMaestra(item.id)">Editar</button>
+                                            <button type="button" class="btn btn-outline-primary btn-sm">Dar de baja</button>
+                                        </div>
+    
+                                    </div>
+    
+    
+    
+    
+    
+                                </div>
+    
+    
+    
+    
+                            </div>
+    
+                        </div>
+    
+                    </li>
+    
+    
+                </ul>
+    
+    
+    
+    
+    
+            </div>
+   
+</div>

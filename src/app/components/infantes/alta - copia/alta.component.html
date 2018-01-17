@@ -1,0 +1,37 @@
+
+
+
+<div [ngSwitch]="page"  >
+  <!-- infante complete recibe el un infante cuando el formulario es valido-->
+  <!-- _persona lo recibe alta-infante en caso de editar -->
+  <app-alta-infante  *ngSwitchCase="1" [_persona]="infante"  (infanteComplete)="catchInfanteComplete($event)"></app-alta-infante>
+  <app-alta-padre    *ngSwitchCase="2"    (secondTutorComplete)="catchSecondTutorComplete($event)"
+                                          (padreComplete)="catchPadreComplete($event)"
+                                          (buttonFalse)="catchButtonFalse($event)"
+                                            (formInvalido)   ="obtenerFOrmularioInvalido($event)"
+
+    ></app-alta-padre>
+  <app-alta-padre *ngSwitchCase="3"></app-alta-padre>
+</div>
+
+<div class="container">
+  <div class="row justify-content-end">
+    <!--complete == formulario del infante complete  -->
+    <!--si la pagina es diferente a 1 y elformulario  infante esta completo  -->
+    <button *ngIf="complete && page != 1 " class="col-3" (click)="volverInfante()" class="btn btn-outline-primary">
+         Editar  Infante
+          </button>
+        <!--si la pagina es 1 y el infante esta completo  -->
+    <button *ngIf="page==1" class="col-3" (click)="agregarTutor()" class="btn btn-outline-primary" [disabled]="!infanteValido">
+          Agregar Tutor
+          </button>
+    <button class="col-3"  class="btn btn-outline-primary" (click)="enviarDatos()"
+    [disabled]="!guardarValido ">
+          Guardar
+          </button>
+
+  </div>
+</div>
+  
+
+

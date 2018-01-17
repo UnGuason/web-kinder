@@ -1,0 +1,98 @@
+.panel-body{
+  padding:20px;
+}
+h3{
+  text-align: center;
+  padding-top: 40px;
+}
+
+.img-circle {
+  border-radius: 50%;
+}
+.img-circle {
+  border-radius: 0;
+}
+
+.ratio {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  height: 0;
+  padding-bottom: 100%;
+  position: relative;
+  width: 100%;
+}
+.img-circle {
+  border-radius: 50%;
+}
+.img-responsive {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+.card-img-left {
+  border-bottom-left-radius: calc(.25rem - 1px);
+  border-top-left-radius: calc(.25rem - 1px);
+  float: left;
+  padding-right: 1em;
+  margin-bottom: -1.25em;
+  width: 100px;
+  height: auto;
+}
+.imagen{
+  width: auto;
+  height: auto;
+  box-shadow: 5px 5px 5px grey;
+  
+}
+.datos{
+  font-size: 12px;
+
+}
+.nombre{
+  margin-bottom:5px ! important;
+  text-transform: uppercase;
+}
+.div-imagen{
+  padding-left: 0px !important;
+  
+}
+.tarjeta{
+  box-shadow: 5px 5px 5px grey;
+  margin-bottom:1rem !important;
+  
+  
+}
+
+/deep/.panel-heading{
+  color: #fff;
+  background-color: #337ab7;
+  border-color: #337ab7;  
+  padding: 10px 15px;
+  border-bottom: 1px solid transparent;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+.panel {
+  margin-bottom: 20px;
+  background-color: #fff;
+  border: 1px solid ;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+  box-shadow: 0 1px 1px rgba(0,0,0,.05);
+   touch-action: none
+  
+  
+}
+.panel-bod{
+  padding:1px !important;
+}
+
+
+.blue{
+  background-color:#BBDEFB;
+}
+.cerrar{
+  padding-right: 0px !important;
+}

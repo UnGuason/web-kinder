@@ -1,0 +1,43 @@
+
+.bg-primary {
+    background-color: #2196f3 !important;
+}
+
+.navbar a {
+    background-color: #2196f3 !important;
+    color: #FFFFFF;
+    vertical-align: middle;
+}
+.btn-link{
+    color:white;
+}
+ .dropdown-menu {
+ 
+    background-color: #2196f3 ;
+
+}
+.active{
+    font-weight: bold;
+    color:white;
+}
+
+.img-circle{
+    width: 50px;
+    height: auto;
+    box-shadow: 5px 5px 5px grey;
+    
+ 
+    }
+    .separador{
+        padding-right: 40px !important;
+    }
+    .separado{
+        padding-right: 10px !important;
+    }
+    .nombre{
+        color:white;
+        font-weight: bold;
+    }
+    a.nav-link{
+        padding-top: 10px;
+    }

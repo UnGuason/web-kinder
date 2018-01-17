@@ -1,0 +1,165 @@
+<nav   *ngIf="authService.isAuthenticated()" class="navbar navbar-toggleable-md navbar-light bg-primary"  >
+  <button class="navbar-toggler navbar-toggler-right" type="button" (click)="isNavbarCollapsed = !isNavbarCollapsed" aria-controls="exCollapsingNavbar2" aria-expanded="false" aria-label="Toggle navigation"  data-target="#navbarText">
+    &#9776;
+  </button>
+    <a class="navbar-brand" [routerLink]="['home']">Virtual Kinder</a>
+    <div [ngbCollapse]="isNavbarCollapsed" class="ccollapse navbar-collapse justify-content-start"  id="exCollapsingNavbar2">
+        
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" 
+         *ngIf="authService.isAuthenticated()"
+        [routerLink]="['actividad']">Actividades</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link"
+         *ngIf="authService.isAuthenticated()"
+         [routerLink]="['mensaje']">Mensajes</a>
+      </li>
+       <li class="nav-item dropdown">
+       <div ngbDropdown class="d-inline-block" *ngIf=" tipo=='1' || tipo=='2'" >
+        <a class="nav-link dropdown-toggle " id="dropdownMenu1" ngbDropdownToggle
+       routerLinkActive="active" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Infantes</a>
+
+        <div class="dropdown-menu"aria-labelledby="dropdownMenu1" >
+          <a class="dropdown-item" [routerLink]="['alta']" (click)="isNavbarCollapsed = !isNavbarCollapsed">Alta</a>
+          <a class="dropdown-item" [routerLink]="['buscar_infante']" >Buscar</a>
+          
+    
+
+        </div>
+      </div>
+      </li>
+     
+      <li class="nav-item dropdown"  *ngIf="tipo=='1'">
+          <div ngbDropdown class="d-inline-block">
+              <a class="nav-link dropdown-toggle " id="dropdownMenu1" ngbDropdownToggle
+             routerLinkActive="active" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Maestras</a>
+      
+              <div class="dropdown-menu"aria-labelledby="dropdownMenu1">
+                <a class="dropdown-item" [routerLink]="['alta_maestra']" (click)="isNavbarCollapsed = !isNavbarCollapsed" >Alta</a>
+                <a class="dropdown-item" [routerLink]="['buscar_maestra']" (click)="isNavbarCollapsed = !isNavbarCollapsed">Buscar</a>
+                
+          
+      
+              </div>
+            </div>
+      </li>
+      <li class="nav-item dropdown" *ngIf=" tipo=='1'">
+          <div ngbDropdown class="d-inline-block">
+              <a class="nav-link dropdown-toggle " id="dropdownMenu1" ngbDropdownToggle
+             routerLinkActive="active" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Salas</a>
+      
+              <div class="dropdown-menu"aria-labelledby="dropdownMenu1">
+                <a class="dropdown-item" [routerLink]="['alta_sala']" (click)="isNavbarCollapsed = !isNavbarCollapsed" >Alta</a>
+                <a class="dropdown-item" [routerLink]="['lista_sala']" (click)="isNavbarCollapsed = !isNavbarCollapsed">Lista</a>
+                
+          
+      
+              </div>
+            </div>
+      </li>
+      
+  
+    </ul>
+    <ul  class="navbar-nav ml-auto">
+      <li class="separado  hidden-md-down">
+        <a class="nombre nav-link">{{nombre}}</a>
+      </li>
+        <li class="separador  hidden-md-down" >
+            <span class="chat-img pull-left">
+                <img class="img-circle" [src]="foto" alt="User Avatar" class="img-circle" />
+            </span>
+        </li>
+
+
+      <li class="nav-item separador">
+        <a (click)="logout()"
+        *ngIf="authService.isAuthenticated()"
+         class="nav-link" >Salir </a>    
+        </li>
+  
+    </ul>
+
+  
+
+  </div>
+
+  
+ 
+</nav>
+
+
+
+
+
+
+
+<!-- <nav class="navbar navbar-toggleable-md navbar-light bg-primary">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" [routerLink]="['home']">Virtual Kinder</a>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" 
+         *ngIf="authService.isAuthenticated()"
+        [routerLink]="['actividad']">Actividades</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link"
+         *ngIf="authService.isAuthenticated()"
+         [routerLink]="['mensaje']">Mensajes</a>
+      </li>
+         <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle"
+       routerLinkActive="active" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Infantes</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" [routerLink]="['alta']">Alta</a>
+          <a class="dropdown-item" [routerLink]="['buscar_infante']">Buscar</a>
+          
+    
+
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle"
+       routerLinkActive="active" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+             Maestras</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" [routerLink]="['alta']">Alta</a>
+          <a class="dropdown-item" [routerLink]="['alta']">Buscar</a>
+          
+    
+
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle"
+       routerLinkActive="active" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+             Salas</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" [routerLink]="['alta']">Alta</a>
+          <a class="dropdown-item" [routerLink]="['alta']">Buscar</a>
+          
+    
+
+        </div>
+      </li>
+  
+    </ul>
+    <span class="navbar-text ">
+   
+      
+       <a (click)="logout()"
+       *ngIf="authService.isAuthenticated()"
+        class="nav-kink" >Salir </a>
+
+    </span>
+  </div>
+</nav> -->

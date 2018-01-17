@@ -1,0 +1,164 @@
+
+
+<div class="container main">
+    <h3>Mensajes</h3>
+    
+    <div class="row">
+
+    
+        
+        <!-- lista -->
+        <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+            <!-- fa fa-plus-circle -->
+
+            <ul class="nav nav-pills nav-conversaciones">
+                <li class="nav-item"  >
+                    <a class="nav-link" (click)="setTab(1)"  [ngClass]="{'active':isSelected(1)}">Conversaciones
+
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" (click)="setTab(2)"  [ngClass]="{'active':isSelected(2)}">Nuevo</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" (click)="setTab(3)">Archivados</a>
+                </li>
+              
+            </ul>
+            <div [ngSwitch]="tab">
+                <!-- pestaña conversaciones -->
+
+                <ul class="list-group chat" ng-container *ngSwitchCase="1">
+                    <li class="left clearfix"   *ngFor="let item of conversaciones;let i =  index " (click)="seleccionChat(i)"  [ngClass]="{'activo':item.id_conversacion===id_conversacion}" >
+                        <span class="chat-img pull-left">
+                            <img src="{{item | fotoCorreo:correo}}" alt="User Avatar" class="img-circle" />
+                        </span>
+                        <div class="chat-body clearfix">
+                            <div class="header">
+                                    <small class="text-muted pull-right">
+                                            <fa [name]="'archive'" [size]=1></fa>
+                                            
+                                            <span  ></span></small>
+                                <strong class="primary-font"> {{item.mensajes | nombreCorreo:correo}} </strong>
+                            </div>
+                            <p>
+                                {{item.asunto}}
+
+                            </p>
+                        </div>
+                    </li>
+
+
+                </ul>
+                <!-- pestaña nueva conversación -->
+                <div ng-container *ngSwitchCase="2">
+                        <input type="text"  class="form-control" id="inlineFormInputGroup" placeholder="Asunto" [(ngModel)]="asunto" />
+                        
+                        <form [formGroup]="Forma">
+                    <ng-template #rt let-r="result" let-t="term">
+                        <img [src]="r.foto" width="32"> {{ r.nombre_completo}}
+                    </ng-template>
+                    <div class="form-group row" >
+                            
+                    <label for="typeahead-template">Seleccione Destinatarios</label>
+                    <input  #input id="typeahead-template" formControlName="nombre" type="text" class="form-control" [(ngModel)]="model" [ngbTypeahead]="search" [resultTemplate]="rt"
+                        [inputFormatter]="formatter" (selectItem)="onSelectTypeahead($event.item)"  />
+                    <hr>
+                    </div>
+                        </form>
+                    <!-- lista de destinatarios -->
+                    <ul class="list-group chat" >
+                            <li class="left clearfix activo" *ngFor="let item of destinatarios;let i =  index " >
+                                <span class="chat-img pull-left">
+                                    <img src="{{item.foto}}" alt="User Avatar" class="img-circle" />
+                                </span>
+                                <div class="chat-body clearfix">
+                                    <div class="header">
+                                            <small class="text-muted pull-right">
+                                                    <fa [name]="'times'" [size]=1 (click)="eliminarDestinatario(i)" ></fa>
+                                                    
+                                                    <span  ></span></small>
+                                        <strong class="primary-font"> {{item.nombre_completo}} </strong>
+                                    </div>
+                                    <p>
+                                            {{asunto}}
+                                    </p>
+                                </div>
+                            </li>
+        
+        
+                        </ul>
+                  
+                </div>
+
+            </div>
+
+
+
+
+        </div>
+
+        <!-- mensajes -->
+        <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                <ngb-alert class="col-12" *ngIf="successMessage" type="danger" (close)="successMessage = null"> <strong class="primary-font">{{ successMessage }}</strong> Faltan completar campos</ngb-alert>
+                
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading chats">
+                                
+                            <span class="glyphicon glyphicon-comment"></span> 
+
+                        </div>
+                        <div class="panel-body">
+                            <ul class="chat" *ngIf="chat">
+
+                                <li class="clearfix" *ngFor="let item of chat" [ngClass]="{'left':item.correo_destino==correo,'right': correo== item.correo_origen }">
+                                    <span class="chat-img" [ngClass]="{'pull-right': correo== item.correo_origen, 'pull-left': item.correo_destino==correo}">
+                                        <img src="{{item.foto}}" alt="User Avatar" class="img-circle" />
+                                    </span>
+                                    <div class="chat-body clearfix">
+                                        <div class="header">
+                                            <small class="text-muted" [ngClass]="{'pull-right': correo== item.correo_destino, 'pull-left': item.correo_origen==correo}">
+                                                <span class="glyphicon glyphicon-time"></span>{{item.fecha | date:'medium'}}</small>
+                                            <strong class="primary-font" [ngClass]="{'pull-right': correo== item.correo_origen, 'pull-left': item.correo_destino==correo}">{{item.apnom_ori}} </strong>
+                                        </div>
+                                        <br>
+                                        <p  [ngClass]="{'pull-right': correo== item.correo_origen, 'pull-left': item.correo_destino==correo}">
+                                            {{item.cuerpo}}
+                                        </p>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <div class="panel-footer">
+                                
+                            <div class="input-group">
+                                <textarea id="btn-input" [(ngModel)]="respuesta" cols="40" rows="5" type="text" class="form-control input-sm" placeholder="Escribir Mensaje ..."></textarea>
+                                <span class="input-group-btn">
+                                    <button  class="btn btn-warning btn-sm" id="btn-chat" (click)="responderMensaje() ">
+                                        Enviar
+                                    </button>
+                                
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+
+    
+</div>
+
+
+<!-- bootsnip -->

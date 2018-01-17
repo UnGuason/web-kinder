@@ -1,0 +1,5 @@
+RewriteBase /
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule (.*) https://virtualkinder.com%{REQUEST_URI}  
+<IfModule mod_rewrite.c>

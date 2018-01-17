@@ -1,0 +1,72 @@
+
+    <div class="site-wrapper"  *ngIf="!this.authService.isAuthenticated()" >
+      
+        <div class="site-wrapper-inner">
+          <img src="assets/logo_virtual.png" class="img-fluid imagen" alt="Responsive image">
+      
+          <div class="cover-container">
+      
+      
+            <div class="inner cover">
+      
+      
+              <div class="row justify-content-center ">
+                <h2 class="cover-heading">Una solución en la comunicación entre padres y jardines Maternales</h2><br>
+                <p class="lead">Seleccione metodo para iniciar sesión</p>
+                <div class="row">
+                  <div class="col-6">
+                      <button class="loginBtn loginBtn--facebook" (click)="login('facebook')">
+                          Login with Facebook
+                        </button>
+                        
+                       
+                  </div>
+
+                    <div class="col-6">
+                        <button class="loginBtn loginBtn--google" (click)="login('google')">
+                            Login with Google
+                          </button> 
+                    </div>
+
+                </div>
+              
+               
+      
+      
+      
+      
+      
+              </div>
+              <!-- <h1 class="cover-heading">Web App.</h1>
+                  <p class="lead">Aplicación web para los productores de seguros de Urban Group.</p>
+                    <p class="lead float-right">
+                    <a  class="btn btn-lg btn-outline" (click)="login()">Entrar</a>
+                  </p>
+                -->
+             </div>
+      
+            <div class="mastfoot">
+              <div class="inner">
+                <p>Desarrollado por Gonzalo Reynoso y Leandro Curra.</p>
+              </div>
+            </div>
+      
+          </div>
+      
+        </div>
+      
+      </div>
+    
+    <!-- <div class="principal"> 
+    
+      <button class="loginBtn loginBtn--facebook">
+        Login with Facebook
+      </button>
+      
+      <button class="loginBtn loginBtn--google">
+        Login with Google
+      </button>   
+     </div> -->
+  
+    <!-- JAVASCRIPT FILES -->
+    

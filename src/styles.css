@@ -1,1 +1,56 @@
 /* You can add global styles to this file, and also import other style files */
+html, 
+body {
+    height: 100% ;
+    /* background-color: #478ac9 !important; */
+    height: 100% !important;
+background-color: white;
+}
+body {
+    color: #2c2c2c;
+    font-size: 14px;
+    font-family: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+}
+p {
+    line-height: 1.61em;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+/* loader */
+@keyframes ld-wander-h {
+    0% {
+      -webkit-transform: translate(-35%, 0);
+      transform: translate(-35%, 0);
+    }
+    50% {
+      -webkit-transform: translate(35%, 0);
+      transform: translate(35%, 0);
+    }
+    100% {
+      -webkit-transform: translate(-35%, 0);
+      transform: translate(-35%, 0);
+    }
+  }
+  @-webkit-keyframes ld-wander-h {
+    0% {
+      -webkit-transform: translate(-35%, 0);
+      transform: translate(-35%, 0);
+    }
+    50% {
+      -webkit-transform: translate(35%, 0);
+      transform: translate(35%, 0);
+    }
+    100% {
+      -webkit-transform: translate(-35%, 0);
+      transform: translate(-35%, 0);
+    }
+  }
+  .ld.ld-wander-h {
+    -webkit-animation: ld-wander-h 1s infinite ease-out;
+    animation: ld-wander-h 1s infinite ease-out;
+  }

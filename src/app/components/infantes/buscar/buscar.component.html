@@ -1,0 +1,201 @@
+<!-- <div class="col-4 offset-4 cargando" *ngIf="cargando" >
+
+<img src="assets/logo-kinderv.png" alt="" class="ld ld-wander-h">
+<h5>Cargando...</h5>
+
+</div> -->
+<div class="container"  >
+
+
+        
+        <app-dialog [(visible)]="showDialog">
+                <div class=" titulo">
+                        <h3>Padres</h3>
+                        
+                </div>
+            <div class="container-fluid">
+                
+                <div class="row">
+            
+                
+                    <div class="col-6" *ngIf="padres.length >= 1" >
+                            <div class="header">
+                                 
+                                <strong class="primary-font text-center">{{padres[0].nombre}}  {{padres[0].apellido}}</strong>
+                                <p class="chica">
+                                     <span> <fa [name]="'id-card'" [size]=1 ></fa></span>  {{padres[0].DNI}}                           
+                             </p>
+                             <p class="chica">
+                                    <span> <fa [name]="'mobile'" [size]=1 ></fa></span>  {{padres[0].telefono}}                           
+                            </p>
+                            <p class="chica">
+                                    <span> <fa [name]="'birthday-cake'" [size]=1 ></fa></span>  {{padres[0].fecha_na | date}}                           
+                            </p> 
+                            <p class="chica">
+                                    <span> <fa [name]="'envelope'" [size]=1 ></fa></span>  {{padres[0].correo}}                           
+                            </p>  
+                            <p class="chica">
+                                    <span> <fa [name]="'map-marker'" [size]=1 ></fa></span>  {{padres[0].direccion}}                           
+                            </p>                             
+                            </div>
+                    </div>
+                    <div class="col-6" *ngIf="padres.length > 1" >
+                            <div class="header">
+                                 
+                                <strong class="primary-font text-center">{{padres[1].nombre}}  {{padres[1].apellido}}</strong>
+                                <p class="chica">
+                                     <span> <fa [name]="'id-card'" [size]=1 ></fa></span>  {{padres[1].DNI}}                           
+                             </p>
+                             <p class="chica">
+                                    <span> <fa [name]="'mobile'" [size]=1 ></fa></span>  {{padres[1].telefono}}                           
+                            </p>
+                            <p class="chica">
+                                    <span> <fa [name]="'birthday-cake'" [size]=1 ></fa></span>  {{padres[1].fecha_na | date}}                           
+                            </p> 
+                            <p class="chica">
+                                    <span> <fa [name]="'envelope'" [size]=1 ></fa></span>  {{padres[1].correo}}                           
+                            </p>  
+                            <p class="chica">
+                                    <span> <fa [name]="'map-marker'" [size]=1 ></fa></span>  {{padres[1].direccion}}                           
+                            </p>                             
+                            </div>
+                    </div>
+                    <div class="col-6" *ngIf="padres.length == 1" >
+                            <div class="header">
+                                 
+                               <strong class="primary-font text-center">Solo un padre Asignado</strong>
+                            </div> 
+                    </div>
+                    </div>
+            
+                
+            
+            </div>
+            
+        </app-dialog>
+        
+<div class="col-12">
+    <div class="row">
+        <div class="col-12 col-md-8 col-lg-8 form-group">
+            <div class="form-group">
+                <form [formGroup]="formBusqueda" style="display: block;" autocomplete="off">
+                    <div class="col-xs-12" id="busqueda">
+
+                        <input type="text" name="parametro_busqueda" formControlName="parametro" tabindex="1" class="form-control" placeholder="Parametro de busqueda"
+                            value="">
+
+                        <span *ngIf="!formBusqueda.valid" class="error" id="danger"><small>Minimo 3 caracteres</small></span>
+
+
+                    </div>
+
+
+                    
+
+
+
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+</div>
+
+    <div class="row">
+            <ul class="list-group chat col-12"  >
+                    <li class="left clearfix"   *ngFor="let item of infantes"   >
+                        <span class="chat-img pull-left">
+     <img   [src]='sanitizer.bypassSecurityTrustUrl(link+item.foto)'
+     alt="User Avatar" class="img-circle" />
+                        </span>
+                        <div class="chat-body clearfix">
+                            <div class="header">
+                                    <small class="text-muted pull-right icono">
+                                            <fa [name]="'archive'" [size]=2></fa>
+                                            
+                                            <span  ></span></small>
+                                            <small class="text-muted pull-right icono">
+                                                    <fa [name]="'pencil-square-o'" [size]=2 (click)="editarInfante(item.id)"></fa>
+                                                    
+                                                    <span  ></span></small>
+                                         <small class="text-muted pull-right icono">
+                                                            <fa [name]="'address-card'" [size]=2 (click)="verPadres(item.id)"></fa>
+                                                            
+                                                            <span  ></span></small>
+                                <strong class="primary-font text-center"> {{item.nombre_completo }} </strong>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                            
+                                    <p class="small">
+                                            Documento: {{item.DNI}}                          
+                                 </p>
+                                 <p class="small">Telefono: {{item.telefono}} </p>
+                                 <p class="small">Fecha Nacimiento:{{item.fecha_na | date}}</p>
+                                 <p  class="small">Dirección: {{item.direccion}}</p>
+                                 <p  class="small">Alta : {{item.fecha_alta | date }}</p>
+                                 
+                                 
+                                 
+                                 
+                                </div>
+                                <div class="col-6" *ngIf="item.nombre_sala" >
+                                    
+                                        <p class="small">Sala: {{item.nombre_sala}} </p>
+                                        <!-- <p class="small">Fecha Nacimiento:{{item.fecha_na | date}}</p>
+                                        <p  class="small">Dirección: {{item.direccion}}</p>
+                                        <p  class="small">Alta : {{item.fecha_alta | date }}</p> -->
+                                        <p class="small"  (click)="editarSala(item.id_sala)">Color:<fa [name]="'square'" 
+                                            [size]=2                
+                                        [style.color]="item.color"></fa></p>
+                                  
+                            
+                                </div>
+                                <div class="col-6" *ngIf="!item.nombre_sala" >
+                                        
+                                            <p class="small">No está asignado a una sala</p>
+                                          
+                                            <!-- <p class="small">Fecha Nacimiento:{{item.fecha_na | date}}</p>
+                                            <p  class="small">Dirección: {{item.direccion}}</p>
+                                            <p  class="small">Alta : {{item.fecha_alta | date }}</p> -->
+                                      
+                                
+                                    </div>
+                            </div>
+                          
+                           
+                        </div>
+                    
+                    </li>
+
+
+                </ul>
+
+
+      
+
+        <!-- <nav aria-label="...">
+
+    <ul class="pagination justify-content-center">
+        <li class="page-item " [ngClass]="{disabled:pager.currentPage === 1} ">
+            <a [hidden]="cantidad_registros < 160" class=" page-link" tabindex="-1" (click)="setPage(1);consultar(1)">Primera</a>
+        </li>
+        <li *ngFor="let page of pager.pages" class="page-i" [ngClass]="{'page-item active': pager.currentPage === page}">
+
+            <button [hidden]="cantidad_registros < 20" class="page-link" (click)="setPage(page);consultar(page)">{{page}} </button>
+        </li>
+        <li [ngClass]="{'invisible': cantidad_registros < 160}" class="page-item" [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+            <a class="page-link" (click)="setPage(pager.totalPages)">Ultima</a>
+        </li>
+        <  <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                    <button  class="page-link" (click)="setPage(pager.totalPages)">Last</button>
+     </li> 
+
+
+    </ul>
+</nav> -->

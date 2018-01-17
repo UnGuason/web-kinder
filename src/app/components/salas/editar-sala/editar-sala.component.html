@@ -1,0 +1,132 @@
+<div class="container">
+  
+      <h3>Editar Sala : <span class="strong">{{nombre_sala}}</span></h3>
+      
+      <div class="row">
+            <div class="col-12">
+                    <ngb-alert type="danger" *ngIf="mostrarAlert"  (close)="mostrarAlert= !mostrarAlert">No se realizaron  Cambios!</ngb-alert>
+                    
+         </div>
+        
+     
+          <div class="col-3 actualizar"  >
+                  <button class="btn btn-outline-primary btn-block "
+                   [disabled]="!valida_boton"
+                   (click)="enviar()"
+                   >Actualizar</button>
+          </div>
+  
+  
+  
+  
+  
+  
+      </div>
+   </div>   
+  
+  
+      <div class="row">
+          <div class="col-4">
+              <div class="panel panel-blue">
+                  <div class="panel-heading ">
+                      Infantes 
+                  </div>
+                  <div class="panel-body" dnd-sortable-container [dropZones]="['boxers-zone']" [sortableData]="infantes_sin_asignar">
+                      <ul class="list-group">
+                          <li *ngFor="let item of infantes_sin_asignar; let i = index"
+                           class="list-group-item tarjeta"  dnd-sortable [sortableIndex]="i" [dragEnabled]="true" dnd-draggable [dragData]="[item,i,infante]">
+                                 
+                              <div class="col-4 div-imagen">
+                                  <img class="img-responsive imagen" src="https://virtualkinder.com/subir/uploads/{{item.foto}}">
+                              </div>
+  
+  
+                              <!-- <img class="card-img-left" src="https://virtualkinder.com/subir/uploads/default.png" alt="Card image cap"> -->
+  
+                              <!-- <div class="ratio img-responsive img-circle" [style.background-image]="'url(https://virtualkinder.com/subir/uploads/default.png )'"></div> -->
+  
+  
+                              <div class="col-8">
+                                    
+                                  <p class="nombre"> {{item.nombre_completo}}</p>
+                                  <p class="datos">Alta: {{item.fecha_alta |date}}<br> Dni: {{item.DNI }}</p>
+                                 
+                              </div>
+                              
+              
+  
+                          </li>
+  
+  
+  
+                      </ul>
+                  </div>
+              </div>
+          </div>
+          <div class="col-4">
+              <div class="panel panel-blue">
+                  <div class="panel-heading">
+                      Maestras </div>
+                  <div class="panel-body" dnd-sortable-container [sortableData]="maestras_sin_asignar">
+                      <ul class="list-group">
+                          <li *ngFor="let item of maestras_sin_asignar; let i = index" class="list-group-item tarjeta"
+                          dnd-sortable [sortableIndex]="i" [dragEnabled]="true"  dnd-draggable [dragData]="[item,i,maestra]">
+  
+                                  <div class="card-body">
+                                 <p>{{item.nombre_completo}}</p>
+                              </div>
+                          </li>
+  
+  
+  
+                      </ul>
+                  </div>
+              </div>
+          </div>
+          <div class="col-4">
+              <div class="panel panel-info" >
+                  <div class="panel-heading" [style.background]="color">
+                      Sala </div>
+                      
+                  <div class="panel-body" dnd-droppable [allowDrop]="allowDropFunction('infante')" (onDropSuccess)="addToSala($event)">
+                      <ul class="list-group">
+                          <li *ngFor="let item of sala; let i = index"  class="list-group-item tarjeta" >
+  
+                                
+  
+                                  <div class="col-4 div-imagen" *ngIf="item.tipo== infante"  >
+                                          <img class="img-responsive imagen" src="https://virtualkinder.com/subir/uploads/{{item.foto}}">
+                                  </div>
+          
+          
+                                      <!-- <img class="card-img-left" src="https://virtualkinder.com/subir/uploads/default.png" alt="Card image cap"> -->
+          
+                                      <!-- <div class="ratio img-responsive img-circle" [style.background-image]="'url(https://virtualkinder.com/subir/uploads/default.png )'"></div> -->
+          
+          
+                                      <div class="col-8" *ngIf="item.tipo== infante">
+                                              <button type="button" class="close justify-content-end" aria-label="Close" (click)="eliminarTarjeta(item,i)">
+                                                      <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                          <p class="nombre"> {{item.nombre_completo}}</p>
+                                          <p class="datos">Alta: {{item.fecha_alta | date}}<br> Dni: {{item.DNI }} {{item.tipo}}</p>
+                                         
+                                      </div>
+                                      <div class="col-12" *ngIf="item.tipo== maestra">
+                                              <button type="button" class="close justify-content-end" aria-label="Close" (click)="eliminarTarjeta(item,i)">
+                                                      <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                          <p class="nombre"> {{item.nombre_completo}}</p>
+                                         
+                                      </div>
+                      
+          
+                                  
+                              
+                          </li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      
+  

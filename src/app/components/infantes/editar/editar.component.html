@@ -1,0 +1,404 @@
+<ngb-tabset *ngIf="datos_infante">
+  <ngb-tab title="Editar Infante">
+    <ng-template ngbTabContent>
+      <div class="container">
+        <div class="col-2" *ngIf="!upload">
+          <div class="ratio img-responsive img-circle" [style.background-image]="'url(https://virtualkinder.com/subir/uploads/' +datos_infante.foto+' )'">
+
+
+          </div>
+
+        </div>
+
+        <form [formGroup]="FormaInfante" (ngSubmit)="onSubmit()">
+
+          <div>
+            <!-- [ngClass]="{'has-danger':!Forma.get('nombre').valid}" -->
+            <div class="form-group row">
+              <label class="col-2  col-form-label">Nombre</label>
+              <div class="col-8">
+
+                <input class="form-control" type="text" placeholder="Nombre" formControlName="nombre">
+
+              </div>
+            </div>
+
+
+            <div class="form-group row">
+              <label class="col-2 col-form-label">Apellido</label>
+              <div class="col-8">
+
+                <input class="form-control" type="text" placeholder="Apellido" formControlName="apellido">
+              </div>
+            </div>
+
+          </div>
+
+
+          <div class="form-group row">
+            <label class="col-2 col-form-label">Documento</label>
+            <div class="col-8">
+
+              <input class="form-control" type="number" placeholder="Número de documento" formControlName="DNI">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-2 col-form-label">Direccion</label>
+            <div class="col-8">
+
+              <input class="form-control" type="text" placeholder="direccion" formControlName="direccion">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-2 col-form-label">Teléfono</label>
+            <div class="col-8">
+
+              <input class="form-control" type="telephone" placeholder="1566083301" formControlName="telefono">
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label class="col-4 col-form-label">Fecha de Nacimiento</label>
+            <div class="col-7">
+              <p-calendar placeholder="Fecha de nacimiento" dateFormat="dd/mm/yy" formControlName="fecha_na" [monthNavigator]="true" [yearNavigator]="true"
+                yearRange="2000:2030" [locale]="es"></p-calendar>
+
+            </div>
+
+          </div>
+          <div class="form-group row">
+            <label class="col-4 col-form-label">Seleccionar Imagen</label>
+            <div class="col-3">
+              <label class="btn btn-primary btn-simple btn-small " [ngClass]="{'disabled':upload}">
+          Cambiar imgaen<input type="file"
+             ngFileSelect
+             [options]="options"
+             (onUpload)="handleUpload($event)"
+             (beforeUpload)="beforeUpload($event)" hidden>
+          
+          </label>
+
+            </div>
+
+            <div class="col-1">
+              <i class="fa fa-check fa-2x icon-succes" aria-hidden="true" *ngIf="succes "></i>
+              <i class="fa fa-refresh fa-spin fa-2x fa-fw spinner" *ngIf="upload"></i>
+              <span class="sr-only">Loading...</span>
+            </div>
+
+
+
+
+          </div>
+
+          <button class="col-4" class="btn btn-outline-danger" (click)="cancelar()">
+              Cancelar
+        </button>
+
+          <button class="col-8" type="submit" class="btn btn-outline-primary" [disabled]="!FormaInfante.valid ">
+                  Actualizar
+            </button>
+         
+        </form>
+
+      </div>
+      <div>
+
+      </div>
+    </ng-template>
+  </ngb-tab>
+  <ngb-tab>
+    <ng-template ngbTabTitle><b>Editar</b> tutor</ng-template>
+    <ng-template ngbTabContent>
+      <div class="container animated fadeIn">
+
+        <form [formGroup]="FormaPadre" (ngSubmit)="onSubmitPadre1()">
+
+          <div>
+
+            <div class="form-group row">
+              <label class="col-2  col-form-label">Nombre</label>
+              <div class="col-8">
+
+                <input class="form-control" type="text" placeholder="Nombre" formControlName="nombre1">
+                <!-- <div *ngIf="Forma.controls['nombre'].errors?.required" class="form-control-feedback">
+                  El nombre es necesario
+        
+                </div>
+                <div *ngIf="Forma.controls['nombre'].errors?.minlength" class="form-control-feedback">
+                  Como minimo 3 caracteres
+        
+                </div> -->
+              </div>
+            </div>
+
+
+            <div class="form-group row">
+              <label class="col-2 col-form-label">Apellido</label>
+              <div class="col-8">
+
+                <input class="form-control" type="text" placeholder="Apellido" formControlName="apellido1">
+              </div>
+            </div>
+
+          </div>
+
+
+          <div class="form-group row">
+            <label class="col-2 col-form-label">Documento</label>
+            <div class="col-8">
+
+              <input class="form-control" type="number" placeholder="Número de documento" formControlName="DNI1">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-2 col-form-label">Direccion</label>
+            <div class="col-8">
+
+              <input class="form-control" type="text" placeholder="direccion" formControlName="direccion1">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-2 col-form-label">Teléfono</label>
+            <div class="col-8">
+
+              <input class="form-control" type="telephone" placeholder="1566083301" formControlName="telefono1">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-2 col-form-label">Correo</label>
+            <div class="col-8">
+
+              <input class="form-control" pTooltip="Se utilizará para el envio de notificaciones" tooltipPosition="top" tooltipEvent="focus"
+                showDelay="1000" hideDelay="500" type="email" placeholder="Correo electrónico" formControlName="correo1">
+            </div>
+
+
+          </div>
+          <div class="form-group row">
+            <label class="col-2 col-form-label">Fecha de Nacimiento</label>
+            <div class="col-md-8">
+              <p-calendar formControlName="fecha_na1" [monthNavigator]="true" dateFormat="dd/mm/yy" [yearNavigator]="true" yearRange="1970:2020" [locale]="es"></p-calendar>
+
+            </div>
+
+
+          </div>
+          <button class="col-4" class="btn btn-outline-danger" (click)="cancelar()">
+              Cancelar
+        </button>
+
+
+          <button class="col-8" type="submit" class="btn btn-outline-primary" [disabled]="!FormaInfante.valid ">
+                Actualizar
+          </button>
+
+
+        </form>
+        
+      </div>
+    </ng-template>
+  </ngb-tab>
+  <!--  [disabled]="!segundoTutor" -->
+  <ngb-tab title="Editar Tutor2">
+    <ng-template ngbTabContent>
+      <div *ngIf="segundoTutor;else nuevo_tutor">
+        <!-- editar -->
+<div class="container animated fadeIn">
+
+        <form [formGroup]="FormaPadre2" (ngSubmit)="onSubmitPadre2()">
+
+          <div>
+
+            <div class="form-group row">
+              <label class="col-2  col-form-label">Nombre</label>
+              <div class="col-8">
+
+                <input class="form-control" type="text" placeholder="Nombre" formControlName="nombre2">
+
+              </div>
+            </div>
+
+
+            <div class="form-group row">
+              <label class="col-2 col-form-label">Apellido</label>
+              <div class="col-8">
+
+                <input class="form-control" type="text" placeholder="Apellido" formControlName="apellido2">
+              </div>
+            </div>
+
+          </div>
+
+
+          <div class="form-group row">
+            <label class="col-2 col-form-label">Documento</label>
+            <div class="col-8">
+
+              <input class="form-control" type="number" placeholder="Número de documento" formControlName="DNI2">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-2 col-form-label">Direccion</label>
+            <div class="col-8">
+
+              <input class="form-control" type="text" placeholder="direccion" formControlName="direccion2">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-2 col-form-label">Teléfono</label>
+            <div class="col-8">
+
+              <input class="form-control" type="telephone" placeholder="1566083301" formControlName="telefono2">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-2 col-form-label">Correo</label>
+            <div class="col-8">
+
+              <input class="form-control" pTooltip="Se utilizará para el envio de notificaciones" tooltipPosition="top" tooltipEvent="focus"
+                showDelay="1000" hideDelay="500" type="email2" placeholder="Correo electrónico" formControlName="correo2">
+            </div>
+
+
+          </div>
+          <div class="form-group row">
+            <label class="col-2 col-form-label">Fecha de Nacimiento</label>
+            <div class="col-md-8">
+              <p-calendar formControlName="fecha_na2" [monthNavigator]="true" [yearNavigator]="true" dateFormat="dd/mm/yy" yearRange="1970:2030" [locale]="es"></p-calendar>
+
+            </div>
+
+
+          </div>
+          <button class="col-4" class="btn btn-outline-danger" (click)="cancelar()">
+              Cancelar
+        </button>
+
+
+          <button class="col-8" type="submit" class="btn btn-outline-primary" [disabled]="!FormaPadre2.valid ">
+                          Actualizar
+                    </button>
+
+        </form>
+      </div>
+      
+
+      </div>
+<ng-template #nuevo_tutor>
+        <!-- contenido para dar de alta un tutor -->
+     <div class="container">
+<h4 class="titulo">
+  El Infante {{datos_infante.nombre}}   {{datos_infante.apellido}} Tiene asignado un solo tutor.
+</h4>  
+<div class="form-group row">
+    <label class="custom-control custom-checkbox">Agregar Tutor
+        <input type="checkbox" class="custom-control-input" [(ngModel)]="agregarTutor2">
+        <span class="custom-control-indicator"></span>
+    </label>
+
+</div> 
+<!-- 
+<button type="button" class="btn btn-outline-primary"
+[attr.aria-expanded]="!agregarTutor2" aria-controls="collapseExample">
+Adgregar otro tutor</button> -->
+<div id="collapseExample" [hidden]="!agregarTutor2">
+    <form [formGroup]="FormaPadre2" (ngSubmit)="onSubmitPadreNuevo()">
+        
+                  <div>
+        
+                    <div class="form-group row">
+                      <label class="col-2  col-form-label">Nombre</label>
+                      <div class="col-8">
+        
+                        <input class="form-control" type="text" placeholder="Nombre" formControlName="nombre2">
+        
+                      </div>
+                    </div>
+        
+        
+                    <div class="form-group row">
+                      <label class="col-2 col-form-label">Apellido</label>
+                      <div class="col-8">
+        
+                        <input class="form-control" type="text" placeholder="Apellido" formControlName="apellido2">
+                      </div>
+                    </div>
+        
+                  </div>
+        
+        
+                  <div class="form-group row">
+                    <label class="col-2 col-form-label">Documento</label>
+                    <div class="col-8">
+        
+                      <input class="form-control" type="number" placeholder="Número de documento" formControlName="DNI2">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-2 col-form-label">Direccion</label>
+                    <div class="col-8">
+        
+                      <input class="form-control" type="text" placeholder="direccion" formControlName="direccion2">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-2 col-form-label">Teléfono</label>
+                    <div class="col-8">
+        
+                      <input class="form-control" type="telephone" placeholder="1566083301" formControlName="telefono2">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-2 col-form-label">Correo</label>
+                    <div class="col-8">
+        
+                      <input class="form-control" 
+                         type="email" placeholder="Correo electrónico" formControlName="correo2">
+                    </div>
+        
+        
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-2 col-form-label">Fecha de Nacimiento</label>
+                    <div class="col-md-8">
+                      <p-calendar formControlName="fecha_na2" [monthNavigator]="true" [yearNavigator]="true" dateFormat="dd/mm/yy" yearRange="1970:2030" [locale]="es"></p-calendar>
+        
+                    </div>
+        
+        
+                  </div>
+        
+        <div class="row justify-content-end">
+
+            <button class="col-4" class="btn btn-outline-danger" (click)="cancelar()">
+                Cancelar
+          </button>
+        
+                  <button  type="submit" class="btn btn-outline-primary btn-send" [disabled]="!FormaPadre2.valid ">
+                                  Actualizar
+                      </button>
+                    </div>
+                </form>
+                
+  </div>
+        
+
+
+
+
+</div>
+
+
+
+
+
+      </ng-template>
+
+
+
+    </ng-template>
+  </ngb-tab>
+</ngb-tabset>
+
+
